@@ -1,12 +1,23 @@
 
+all:
+	sh srcs/requirements/tools/setup.sh
+	docker compose -f srcs/docker-compose.yml up --build -d
 
-rm_all: rmi rm rmv
+up: all
 
-rmi:
-	docker rmi -f --force $$(docker images -q)
+down:
+	docker compose -f srcs/docker-compose.yml down
 
-rm:
-	docker rm -f --force $$(docker ps -aq)
+start:
+	docker compose -f srcs/docker-compose.yml start
 
-rmv:
-	docker volume rm $$(docker volume ls -q)
+stop:
+	docker compose -f srcs/docker-compose.yml stop
+
+clean:
+	docker compose -f srcs/docker-compose.yml down --rmi all
+
+fclean: down
+	sudo rm -rf /home/$(USER)/data/*/*
+	docker compose -f srcs/docker-compose.yml down -v --rmi all
+	docker system prune -a -f

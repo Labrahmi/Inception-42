@@ -18,9 +18,9 @@ EXPOSE 9000
 WORKDIR /var/www/html
 
 # Copy WordPress files
-RUN curl -o wordpress.zip -SL https://wordpress.org/latest.zip && \
-    unzip wordpress.zip && \
-    rm wordpress.zip
+# RUN curl -o wordpress.zip -SL https://wordpress.org/latest.zip && \
+#     unzip wordpress.zip && \
+#     rm wordpress.zip
 
 # Copy the custom entrypoint script
 COPY conf/wp-entrypoint.sh /wp-entrypoint.sh

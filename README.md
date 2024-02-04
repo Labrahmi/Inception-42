@@ -64,7 +64,6 @@ The project follows a structured organization for each service:
 ``` 
 .
 ├── Makefile
-├── out
 └── srcs
     ├── docker-compose.yml
     └── requirements
