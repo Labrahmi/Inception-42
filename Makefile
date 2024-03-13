@@ -20,4 +20,8 @@ clean:
 fclean: down
 	sudo rm -rf /home/$(USER)/data/*/*
 	docker compose -f srcs/docker-compose.yml down -v --rmi all
+
+re: fclean all
+
+prune:
 	docker system prune -a -f
